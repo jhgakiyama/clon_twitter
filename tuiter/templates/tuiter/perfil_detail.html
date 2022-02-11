@@ -3,29 +3,31 @@
 {% block content %}
 
   <div class="column">
-    <h2><strong>Otro Menu</strong></h2>
+      <h4 class="subtitle">Otro Menu</h4>
+      <a href="{% url 'perfil_list' %}">
+      <button class="button is-success is-outlined ">Perfiles</button>
+      </a>
+  </div>
+  <div class="column">
+      <h1 class="title">Tuits de {{object.user.first_name}}, {{object.user.last_name}}</h1>
+      <h2 class="subtitle is-5">(@{{object}})</h2>
       <br>
   </div>
   <div class="column">
-    <h2><strong>Mis Tuits</strong></h2>
-      <br>
+      <h4 class="subtitle">Seguidores/Sigo</h4>
 
-  </div>
-  <div class="column">
-    <h2><strong>Seguidores/Sigo</strong></h2>
-      <br>
     <h3>Sigo a:</h3>
         <div class="content">
             <ul>{% for following in object.follows.all %}
-                <li>@{{ following }}</li>
-            {% endfor %}</ul>
+                <li><a href="{% url 'perfil_detail' following.id %}">@{{ following }}</a></li>
+            {% endfor %}
+            </ul>
         </div>
-    <hr>
 
       <h3>Me siguen:</h3>
         <div class="content">
             <ul>{% for following in object.followed_by.all %}
-                <li>@{{ following }}</li>
+                <li><a href="{% url 'perfil_detail' following.id %}">@{{ following }}</a></li>
             {% endfor %}</ul>
         </div>
 
