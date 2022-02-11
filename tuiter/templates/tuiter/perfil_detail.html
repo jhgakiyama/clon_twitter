@@ -19,15 +19,20 @@
     <h3>Sigo a:</h3>
         <div class="content">
             <ul>{% for following in object.follows.all %}
-                <li><a href="{% url 'perfil_detail' following.id %}">@{{ following }}</a></li>
+                {% if object != following %}
+                    <li><a href="{% url 'perfil_detail' following.id %}">@{{ following }}</a></li>
+                {% endif %}
             {% endfor %}
             </ul>
         </div>
 
       <h3>Me siguen:</h3>
-        <div class="content">
+      <div class="content">
+
             <ul>{% for following in object.followed_by.all %}
-                <li><a href="{% url 'perfil_detail' following.id %}">@{{ following }}</a></li>
+                {% if object != following %}
+                    <li><a href="{% url 'perfil_detail' following.id %}">@{{ following }}</a></li>
+                {% endif %}
             {% endfor %}</ul>
         </div>
 
