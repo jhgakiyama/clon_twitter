@@ -2,6 +2,23 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class TimeStampedModel(models.Model):
+    created = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='creado',
+        help_text='fecha de creacion'
+    )
+
+    modified = models.DateTimeField(
+        auto_now=True,
+        verbose_name='modificado',
+        help_text='fecha de modificacion'
+    )
+
+    class Meta:
+        abstract = True
+
+
 class Perfil(models.Model):
     user = models.OneToOneField(
         User,
@@ -24,3 +41,23 @@ class Perfil(models.Model):
 
     class Meta:
         verbose_name_plural = "Perfiles"
+
+
+class Tuit(TimeStampedModel):
+    user = models.ForeignKey(
+        User,
+        related_name="tuits",  # con esto puedo acceder a los tuits del lado de User
+        on_delete=models.DO_NOTHING
+    )
+    body = models.TextField(
+        verbose_name='mensaje',
+        max_length=140
+    )
+
+    def __str__(self):
+        return f"@{self.user} ({self.created:%Y-%m-%d %H:%M}) {self.body[:30]}..."
+
+    def body_min(self):
+        return f"{self.body[:30]}..."
+
+    body_min.short_description = "Mensaje"
