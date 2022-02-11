@@ -95,7 +95,7 @@ Agrego el CDN de Bulma
 
 ~~Agrego la url en la app~~
 
-Crear una Vista basada en clases , para renderizar el home
+Crear una Vista Basada en Clases (VBC) , para renderizar el home
 
 Creo el file views.py dentro de la carpeta del Proyecto
 
@@ -104,11 +104,29 @@ Agrego las url para la Clase
 
 ### 5. Listado de Perfiles
 
-Voy a trabajar con vistas basadas en clases.
+No voy a utilizar una funcion. Voy a crear el List View (VBC) de los Perfiles.
 
-Voy a crear el List View de los Perfiles
+Excluyo mi propio perfil cuando estoy logueado
+
+Sino traigo todos los perfiles , es decir cuando soy un 'Usuario Anonimo'
+
+Sobre escribo el metodo get_queryset
+
+Creo dentro de la carpeta de la app, /templates/tuiter/perfil_list.html
+
+Respeto el nombre, para no utilizar el atributo 'template_name' en la VBC
+
+En este momento elimino del repo la bd sqlite
+Quite de views.py --> app_name = "tuiter"
+En este momento no me acuerdo para que servia.
 
 ### 6. Vista de un Perfil
+
+Agrego el nuevo 'endpoint' para ver un Perfil. Le tengo que pasar como parametro la clave primaria (pk)
+
+Creo la VBC , heredo DetailView.
+
+Edito un poco a mi gusta el perfil_detail.html
 
 ## Follows y Tuits:
 
