@@ -15,6 +15,3 @@ class PerfilListView(ListView):
 
 class PerfilDetailView(DetailView):
     model = Perfil
-
-    def get_queryset(self):
-        return Perfil.objects.all().order_by('user__username')
