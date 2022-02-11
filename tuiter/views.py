@@ -8,10 +8,13 @@ class PerfilListView(ListView):
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            return Perfil.objects.exclude(user=self.request.user)
+            return Perfil.objects.exclude(user=self.request.user).order_by('user__username')
         else:
-            return Perfil.objects.all()
+            return Perfil.objects.all().order_by('user__username')
 
 
 class PerfilDetailView(DetailView):
     model = Perfil
+
+    def get_queryset(self):
+        return Perfil.objects.all().order_by('user__username')
