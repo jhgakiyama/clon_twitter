@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="column">
+    <h2><strong>Otro Menu</strong></h2>
+      <br>
+  </div>
+  <div class="column">
+    <h2><strong>Mis Tuits</strong></h2>
+      <br>
+
+  </div>
+  <div class="column">
+    <h2><strong>Seguidores/Sigo</strong></h2>
+      <br>
+    <h3>Sigo a:</h3>
+        <div class="content">
+            <ul>{% for following in object.follows.all %}
+                <li>@{{ following }}</li>
+            {% endfor %}</ul>
+        </div>
+    <hr>
+
+      <h3>Me siguen:</h3>
+        <div class="content">
+            <ul>{% for following in object.followed_by.all %}
+                <li>@{{ following }}</li>
+            {% endfor %}</ul>
+        </div>
+
+  </div>
+
+{% endblock content %}

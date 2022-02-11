@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Perfil
 
 
@@ -11,3 +11,7 @@ class PerfilListView(ListView):
             return Perfil.objects.exclude(user=self.request.user)
         else:
             return Perfil.objects.all()
+
+
+class PerfilDetailView(DetailView):
+    model = Perfil
