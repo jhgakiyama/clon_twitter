@@ -19,6 +19,6 @@ from .views import DashboardView
 
 urlpatterns = [
     path("", include("tuiter.urls")),
-    path("dashboard/", DashboardView.as_view(), name="dashboard"),
+    path("", DashboardView.as_view(), name="home"),
     path('admin/', admin.site.urls),
 ]
