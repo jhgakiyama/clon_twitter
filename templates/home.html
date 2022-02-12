@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+<div class="column">
+    {% for followed in user.perfil.follows.all %}
+            {% for dweet in followed.user.tuits.all %}
+                {% if user != dweet.user %}
+                <div class="box">
+                    {{ dweet.body }}
+                    <span class="is-small has-text-grey-light">
+                        ({{ dweet.created | naturaltime }}) by <a href="{% url 'perfil_detail' followed.id %}"><strong>@{{ dweet.user.username }}</strong></a>                    </span>
+                </div>
+                {% endif %}
+            {% endfor %}
+    {% endfor %}
+</div>
+
+{% endblock content %}
