@@ -128,13 +128,49 @@ Creo la VBC , heredo DetailView.
 
 Edito un poco a mi gusta el perfil_detail.html
 
+Agrego link para poder ver el listado de perfiles y el detalle de un perfil 
+
+https://realpython.com/django-social-post-3/
 ## Follows y Tuits:
 
 ### 7. Seguir y Dejar de Seguir
 
+Se agregan 2 botones
+
+Cuando deberian aparecer los botones:
+1. Hay que estar logueado. falta
+2. No estar mirando mi propio perfil. OK
+3. El boton verde activado , si no lo sigo. OK
+4. El boton rojo activado , si lo sigo. OK
+
+TODO: 
+
+FALTA TERMINAR LA FUNCION PARA HACER FOLLOW O UNFOLLOW
+
 ### 8. Crear logica para los Tuits 
 
+Crear el modelo para los Tuits
+
+Agrego un modelo abstracto para la fecha de creacion y modificacion
+
+Lo agrego al Admin
+
+Creo varios tuits para ver desde el Admin
+
+Duda: se ve mal la hora desde el admin
+
 ### 9. Ver tuits
+Hago mejoras en perfil_detail , agrego los tuits
+
+Agrego humanize a las app en settings para ver el atrib datetime
+
+Crear un dashborad (yo le diria home), donde voy a ver dos cosas:
+1. Todos los tuits de los usuarios que sigo
+2. Poder crear mis tuits
+
+Veo los tuits de las personas a las que sigo.
+No tengo boton en el home para ver mi perfil
+Se muestran los tuits ordenados por perfil.id
 
 ## Formularios y Submits:
 
