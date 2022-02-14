@@ -54,6 +54,9 @@ class Tuit(TimeStampedModel):
         max_length=140
     )
 
+    class Meta:
+        ordering = ['-created']
+
     def __str__(self):
         return f"@{self.user} ({self.created:%Y-%m-%d %H:%M}) {self.body[:30]}..."
 
