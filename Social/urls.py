@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import DashboardView
+from .views import HomeTuitsListView
 
 urlpatterns = [
     path("", include("tuiter.urls")),
-    path("", DashboardView.as_view(), name="home"),
+    path("", HomeTuitsListView.as_view(), name="home"),
     path('admin/', admin.site.urls),
 ]

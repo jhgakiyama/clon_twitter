@@ -2,18 +2,30 @@
 {% load humanize %}
 
 {% block content %}
-<div class="column">
-    {% for followed in user.perfil.follows.all %}
-            {% for dweet in followed.user.tuits.all %}
-                {% if user != dweet.user %}
-                <div class="box">
-                    {{ dweet.body }}
-                    <span class="is-small has-text-grey-light">
-                        ({{ dweet.created | naturaltime }}) by <a href="{% url 'perfil_detail' followed.id %}"><strong>@{{ dweet.user.username }}</strong></a>                    </span>
-                </div>
-                {% endif %}
-            {% endfor %}
-    {% endfor %}
-</div>
 
+{% if request.user.is_authenticated %}
+    {% if object_list %}
+        <div class="column">
+            <h1 class="title">Hola {{user.get_full_name}}!</h1>
+
+            {% for object in object_list %}
+                <div class="box">
+                    {{ object.body }}<span class="is-small has-text-grey-light">
+                    ({{ object.created | naturaltime }}) by <a href="{% url 'perfil_detail' object.user.id %}"><strong>@{{ object.user.username }}</strong>
+                    </a></span>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <div class="column">
+            <h1 class="title">No tenes Tuis para ver :c</h1>
+        </div>
+    {% endif %}
+{% else %}
+    <div class="column">
+        <h1 class="title">Hola desconocido! e_e</h1>
+        <a href="/admin/login">Logueate</a>
+    </div>
+{% endif %}
 {% endblock content %}
