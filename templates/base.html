@@ -8,17 +8,20 @@
     <title>Tuiter</title>
 </head>
 <body>
+    <a href="{% url 'home' %} ">
     <section class="hero is-small is-success mb-4">
     <div class="hero-body">
         <h1 class="title is-1">Tuiter</h1>
         <p class="subtitle is-4">Clonando a Twitter; con <strong>Django & Bulma</strong>!</p>
     </div>
     </section>
-       <div class="container">
-            <div class="columns">
-                {% block content %}
-                {% endblock content %}
-            </div>
+    </a>
+
+   <div class="container">
+        <div class="columns">
+            {% block content %}
+            {% endblock content %}
         </div>
+    </div>
 </body>
 </html>
