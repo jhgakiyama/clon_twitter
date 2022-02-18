@@ -47,7 +47,8 @@ class Tuit(TimeStampedModel):
     user = models.ForeignKey(
         User,
         related_name="tuits",  # con esto puedo acceder a los tuits del lado de User
-        on_delete=models.DO_NOTHING
+        on_delete=models.SET_NULL,
+        null=True
     )
     body = models.TextField(
         verbose_name='mensaje',
