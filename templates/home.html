@@ -6,10 +6,10 @@
 {% if request.user.is_authenticated %}
     {% if object_list %}
         <div class="column">
-            <h1 class="title">Hola @{{user}}! <strong>({{user.get_full_name}})</strong></h1>
-            <h2 class="subtitle">
-                <a href=" {% url 'perfil_detail' user.perfil.id %} ">Ver perfil</a>
-            </h2>
+            <h1 class="title">Hola
+                <a href=" {% url 'perfil_detail' user.perfil.id %} ">@{{user}}!</a>
+                <strong>({{user.get_full_name}})</strong>
+            </h1>
 
             {% for object in object_list %}
                 <div class="box">
@@ -22,7 +22,7 @@
 
         <div class="column is-one-third">
             <form method="POST">
-                {%csrf_token%}
+                {% csrf_token %}
                 {{ form.as_p }}
                 <button class="button is-success is-fullwidth is-medium mt-5" type="submit">
                     Tuitear
