@@ -46,11 +46,12 @@ class Perfil(models.Model):
 class Tuit(TimeStampedModel):
     user = models.ForeignKey(
         User,
+        verbose_name="usuario",
         related_name="tuits",  # con esto puedo acceder a los tuits del lado de User
         on_delete=models.SET_NULL,
         null=True
     )
-    body = models.TextField(
+    body = models.CharField(
         verbose_name='mensaje',
         max_length=140
     )
@@ -60,6 +61,11 @@ class Tuit(TimeStampedModel):
 
     def __str__(self):
         return f"@{self.user} ({self.created:%Y-%m-%d %H:%M}) {self.body[:30]}..."
+
+    def contar_caracteres(self):
+        return len(self.body)
+
+    contar_caracteres.short_description = "Caracteres"
 
     def body_min(self):
         return f"{self.body[:30]}..."
