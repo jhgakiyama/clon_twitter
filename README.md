@@ -165,18 +165,66 @@ Hago mejoras en perfil_detail , agrego los tuits
 Agrego humanize a las app en settings para ver el atrib datetime
 
 Crear un dashborad (yo le diria home), donde voy a ver dos cosas:
-1. Todos los tuits de los usuarios que sigo
-2. Poder crear mis tuits
-
-Veo los tuits de las personas a las que sigo.
-No tengo boton en el home para ver mi perfil
-Se muestran los tuits ordenados por perfil.id
+1. Todos los tuits de los "Perfiles" que sigo
+2. Poder crear mis Tuits
 
 ## Formularios y Submits:
 
+1. Crear Forms
+2. Prevenir el doble 'envio' y mostrar los errores
+
 ### 10. Crear tuits
 
-### 11. Prevenir doble creacion de tuits 
+Creo forms.py
+
+Creo el ModelForm basado en el Modelo Tuit
+
+Edito un poco el form agregando widget
+
+Agrego el boton para el 'submit'
+
+***
+En esta etapa tengo diferencias con el codigo del tutorial 
+
+Porque estoy utilizando Vistas Basadas en Clases para la vista del "home"
+
+En el tutorial utiliza una funcion:
+
+```
+def dashboard(request): 
+   codigo...
+```
+***
+### 11. Prevenir doble creacion de tuits - Manejo de errores
+
+El problema se da en este momento que al recargar la pagina (ctrl + r) se hace un nuevo envio del Form
+
+Importamos "Django redirect"
+
+```
+from django.shortcuts import redirect
+```
+
+En esta etapa del proyecto, decido cambiar la vista del home, por una Vista Basada en Funcion para no complicarme la vida
 
 ### 12. Mejorar el FrontEnd
 
+## Buenas practicas a seguir
+
+
+
+### Orden de los atributos y metodos en los modelos
+
+1. constants (for choices and others)
+2. fields of the model
+3. custom manager indication
+4. meta
+5. ```def __unicode__ # python 2 def __str__ # python 3 ```
+6. other special methods
+7. def clean
+8. def save
+9. def get_absolute_url
+10. other methods
+
+
+https://medium.com/@rodrigogr/sobrescribir-metodo-get-queryset-django-a91c5872152
