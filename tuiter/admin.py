@@ -37,7 +37,7 @@ class TuitAdmin(admin.ModelAdmin):
 admin.site.unregister(User)
 admin.site.unregister(Group)
 admin.site.register(User, UserAdmin)
-admin.site.register(Perfil, PerfilAdmin)
+# admin.site.register(Perfil, PerfilAdmin)
 admin.site.register(Tuit, TuitAdmin)
 admin.site.site_header = "Clon Tuiter | Admin Ver 1.0.0"
 admin.site.index_title = "Tuiter Django 2022 | Admin Dashboard"
