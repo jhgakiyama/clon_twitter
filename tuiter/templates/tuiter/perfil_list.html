@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="column">
+<div class="column is-6">
 
 {% for object in object_list %}
 
@@ -28,6 +28,11 @@
             </div>
           </div>
         </a>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">Tuits: {{object.user.tuits.all | length}}</a>
+          <a href="#" class="card-footer-item">Siguiendo: {{object.follows.all | length | add:"-1" }}</a>
+          <a href="#" class="card-footer-item">Seguidores: {{object.followed_by.all | length | add:"-1" }}</a>
+        </footer>
       </div>
     </div>
 
