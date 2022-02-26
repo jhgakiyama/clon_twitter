@@ -2,14 +2,15 @@
 {% load humanize %}
 {% block content %}
 
-  <div class="column">
+  <div class="column is-one-fifth ">
       <h4 class="subtitle">Otro Menu</h4>
       <a href="{% url 'perfil_list' %}"><button class="button is-success is-outlined ">Perfiles</button></a>
   </div>
 
   <div class="column">
-      <h1 class="title is">{{object.user.first_name |upper}}, {{object.user.last_name|upper}}</h1>
-      <h2 class="subtitle is-5">(@{{object}})</h2>
+      <h1 class="title is">
+          {{object.user.first_name |upper}}, {{object.user.last_name|upper}}  (@{{object}})
+      </h1>
 
       <div class="content">
           {% for tuit in object.user.tuits.all %}
@@ -24,22 +25,27 @@
 
       <br>
   </div>
-  <div class="column">
+  <div class="column is-one-fifth ">
       {% if request.user.id != object.user.id %}
+      <form method="post">{% csrf_token %}
           <div class="buttons has-addons">
-                {% if perfil in user.perfil.follows.all %}
-                    <button class="button is-success is-static">Seguir</button>
-                    <button class="button is-danger">No seguir</button>
-                {% comment "Optional note" %}
-                    Commented out text with {{ create_date|date:"c" }}
-                {% endcomment %}
-                {% else %}
-                    <button class="button is-success">Seguir</button>
-                    <button class="button is-danger is-static">No seguir</button>
-                {% endif %}
-          </div>
-      {% endif %}
+              {% if object in user.perfil.follows.all %}
+                {% comment "titulo opcional" %} lo estoy sigo {% endcomment  %}
+                <button class="button is-success is-static">Seguir</button>
+                <button class="button is-danger" name="btn_seguir" value="no_seguir">
+                    No seguir
+                </button>
 
+              {% else %}
+                <button class="button is-success" name="btn_seguir" value="seguir">
+                    Seguir
+                </button>
+                <button class="button is-danger is-static">No seguir</button>
+              {% endif %}
+          </div>
+      </form>
+      {% endif %}
+    <br>
     <h3>Siguiendo:</h3>
         <div class="content">
             <ul>{% for following in object.follows.all %}
