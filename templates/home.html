@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load humanize %}
-
+{% comment %}
+object: tuit
+{% endcomment  %}
 {% block content %}
-
 {% if request.user.is_authenticated %}
     {% if object_list %}
         <div class="column">
@@ -12,9 +13,10 @@
             </h1>
 
             {% for object in object_list %}
+
                 <div class="box">
                     {{ object.body }}<span class="is-small has-text-grey-light">
-                    ({{ object.created | naturaltime }}) by <a href="{% url 'perfil_detail' object.user.id %}"><strong>@{{ object.user.username }}</strong>
+                    ({{ object.created | naturaltime }}) by <a href="{% url 'perfil_detail' object.user.perfil.id %}"><strong>@{{ object.user.username }}</strong>
                     </a></span>
                 </div>
             {% endfor %}
